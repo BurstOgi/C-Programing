@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+struct student {
+    int number;
+    char name[50];
+    char surname[60];
+    int vize;
+};
+int main() {
+    int i;
+    struct student A[10];
+    struct student *ptr;
+
+    for(i=0,ptr=&A[0];i<=2;i++,ptr++) {
+        printf("name,surname,number,vize\n");
+        scanf("%s %s %d %d",ptr->name,ptr->surname,&ptr->number,&ptr->vize);
+    }
+    for(ptr=&A[0];ptr<=&A[2];ptr++){
+        printf("Name: %s Surname: %s Number: %d Vize: %d\n",ptr->name,ptr->surname,ptr->number,ptr->vize);
+
+    }
+    return 0;
+}
