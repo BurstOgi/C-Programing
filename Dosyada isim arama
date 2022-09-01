@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include "string.h"
+struct insan {
+    char Ad[16];
+    char bolum[11];
+    int no;
+}A;
+
+void arama(FILE *fp){
+    struct insan a[6];
+    char x[10];
+    printf("hangi isim:");
+    scanf("%s",x);
+    fp = fopen("C:\\Users\\90545\\Desktop\\new.txt","r");
+    if(fp==NULL){
+        printf("asdasd");
+    }
+    while(!feof(fp)){
+        fscanf(fp,"%s %s %d",a->Ad,a->bolum,&a->no);
+        if(strcmp(x,a->Ad)==0){
+            printf("%s %s %d\n",a->Ad,a->bolum,a->no);
+        }
+    }
+    rewind(fp);
+}
