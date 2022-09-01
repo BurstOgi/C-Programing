@@ -6,7 +6,7 @@ struct insan {
     int no;
 }A;
 
-void arama(){
+int main(){
     struct insan a[6];
     char x[10];
     printf("hangi isim:");
@@ -23,4 +23,5 @@ void arama(){
         }
     }
     rewind(fp);
+    fclose(fp);
 }
