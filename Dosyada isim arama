@@ -6,11 +6,12 @@ struct insan {
     int no;
 }A;
 
-void arama(FILE *fp){
+void arama(){
     struct insan a[6];
     char x[10];
     printf("hangi isim:");
     scanf("%s",x);
+    FILE *fp
     fp = fopen("C:\\Users\\90545\\Desktop\\new.txt","r");
     if(fp==NULL){
         printf("asdasd");
