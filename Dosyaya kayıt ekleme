@@ -5,7 +5,7 @@ struct insan {
     char bolum[11];
     int no;
 }A;
-void kayitekleme(){
+int main(){
     FILE *fp
     fp = fopen("C:\\Users\\Casper\\Desktop\\new.txt","a");
     if(fp==NULL){
@@ -16,4 +16,5 @@ void kayitekleme(){
         scanf("%s %s %d",A.Ad,A.bolum,A.no);
         fprintf(fp,"%s %s %d",A.Ad,A.bolum,A.no);
     }
+    fclose(fp);
 }
