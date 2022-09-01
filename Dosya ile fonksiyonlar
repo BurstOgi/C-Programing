@@ -1,0 +1,12 @@
+void cagirma(FILE *p){
+  printf("dosyayı cagirdiniz.");
+  
+}
+
+int main(){
+    FILE *p; //dosya göstericisi olusturuyoruz. 
+    p = fopen("C:\\Users\\90545\\Desktop\\new.txt","w");  //dosya icini silip acıyoruz.
+    
+    cagirma(p); //icine dosyanin pointeriin atiyoruz ve fonksiyonun icine de tekrar dosya olusturur gibi gösterici yolluyoruz..
+    fclose(p);
+}
