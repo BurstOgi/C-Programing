@@ -1,0 +1,15 @@
+int main(){
+        FILE *fp
+        fp = fopen("C:\\Users\\90545\\Desktop\\new.txt", "r");
+        if (fp == NULL) {
+            printf("Dosya bos");
+
+        } 
+        else {
+            while (!feof(fp)){
+                fscanf(fp, "%s %s %d ", A.Ad, A.bolum, &A.no);
+                printf("%s %s %d \n", A.Ad, A.bolum, A.no);
+        }
+        }
+        fclose(fp);
+}
