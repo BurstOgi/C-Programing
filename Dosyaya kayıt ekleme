@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include "string.h"
+struct insan {
+    char Ad[16];
+    char bolum[11];
+    int no;
+}A;
+void kayitekleme(){
+    FILE *fp
+    fp = fopen("C:\\Users\\Casper\\Desktop\\new.txt","a");
+    if(fp==NULL){
+        printf("dosya bos");
+    }
+    else{
+        printf("lütfen girilecek verileri giriniz:");
+        scanf("%s %s %d",A.Ad,A.bolum,A.no);
+        fprintf(fp,"%s %s %d",A.Ad,A.bolum,A.no);
+    }
+}
