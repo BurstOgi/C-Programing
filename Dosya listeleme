@@ -1,3 +1,11 @@
+#include <stdio.h>
+#include "string.h"
+struct insan {
+    char Ad[16];
+    char bolum[11];
+    int no;
+}A;
+
 int main(){
         FILE *fp
         fp = fopen("C:\\Users\\90545\\Desktop\\new.txt", "r");
