@@ -11,7 +11,7 @@ void arama(FILE *fp){
     char x[10];
     printf("hangi isim:");
     scanf("%s",x);
-    fp = fopen("C:\\Users\\90545\\Desktop\\new.txt","r");
+    fp = fopen("new.txt","r");
     if(fp==NULL){
         printf("Bos Dosya");
     }
@@ -25,11 +25,11 @@ void arama(FILE *fp){
     fclose(fp);
 }
 void tekrarolusturma(FILE *fp){
-    fp = fopen("C:\\Users\\90545\\Desktop\\new.txt","w");
+    fp = fopen("new.txt","w");
     fclose(fp);
 }
 void kayitekleme(FILE *fp){
-    fp = fopen("C:\\Users\\90545\\Desktop\\new.txt","a");
+    fp = fopen("new.txt","a");
     if(fp==NULL){
         printf("dosya bos");
     }
@@ -41,7 +41,7 @@ void kayitekleme(FILE *fp){
     fclose(fp);
 }
 void listele(FILE *fp){
-        fp = fopen("C:\\Users\\90545\\Desktop\\new.txt", "r");
+        fp = fopen("new.txt", "r");
         if (fp == NULL) {
             printf("Dosya bos");
 
@@ -58,7 +58,7 @@ int main() {
     FILE *fp;
     int kisisayisi;
     int secim;
-    fp = fopen("C:\\Users\\90545\\Desktop\\new.txt","w");
+    fp = fopen("new.txt","w");
     printf("kac kisilik dosya:");
     scanf("%d",&kisisayisi);
     for (int i = 0; i < kisisayisi; i++) {
