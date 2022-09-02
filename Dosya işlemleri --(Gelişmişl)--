@@ -1,0 +1,129 @@
+#include <stdio.h>
+#include "stdlib.h"
+struct insan {
+    int No;
+    char Ad[15];
+    char Soyad[15];
+    int Bakiye;
+};
+int olusturma(FILE *fp) {
+    struct insan a = {0, "", "", 0};
+    fp = fopen("C:\\Users\\90545\\Desktop\\new.txt", "w");
+        for (int i = 0; i < 100; i++) {
+            fwrite(&a, sizeof(struct insan), 1, fp);
+        }
+    printf("\n----100 Kisilik dosya olusturuldu----\n");
+    fclose(fp);
+    return 0;
+}
+void kayitguncelle(FILE *fp){
+    int no,miktar;
+    struct insan a={0, "", "", 0};
+    fp = fopen("C:\\Users\\90545\\Desktop\\new.txt","r+");
+    printf("Guncellenicek no:");
+    scanf("%d",&no);
+    fseek(fp,(no-1)* sizeof(struct insan),SEEK_SET);
+    fread(&a, sizeof(struct insan),1,fp);
+    if(a.No==0){
+        printf("%d nolu hesap icin bilgi verilmemis:",no);
+    }
+    else{
+        printf("hesaba yatacak (-) veya eklenecek (+) miktari giriniz:");
+        scanf("%d",&miktar);
+        a.Bakiye +=miktar;
+        fseek(fp,(a.No-1)* sizeof(struct insan),SEEK_SET);
+        fwrite(&a, sizeof(struct insan),1,fp);
+    }
+    fclose(fp);
+}
+void arama(FILE *fp){
+    int no;
+    struct insan a={0, "", "", 0};
+    printf("hangi no:");
+    scanf("%d",&no);
+    fp = fopen("C:\\Users\\90545\\Desktop\\new.txt","r");
+        if(fp==NULL){
+            printf("Dosya Bulunamadi");
+        }
+        while(!feof(fp)){
+            fread(&a, sizeof(struct insan),1,fp);
+            if(no==a.No){
+                printf("%d %s %s %d\n",a.No,a.Ad,a.Soyad,a.Bakiye);
+            }
+        }
+        rewind(fp);
+        fclose(fp);
+    }
+void listele(FILE *fp){
+    struct insan a={0, "", "", 0};
+    fp = fopen("C:\\Users\\90545\\Desktop\\new.txt","r");
+    while (!feof(fp)) {
+        fread(&a, sizeof(struct insan), 1, fp);
+        if(a.No!=0){
+            printf("%d %s %s %d\n", a.No, a.Ad, a.Soyad, a.Bakiye);
+        }
+    }
+    fclose(fp);
+}
+void kayitekleme(FILE *fp){
+    fp = fopen("C:\\Users\\90545\\Desktop\\new.txt","r+");
+    struct insan a={0, "", "", 0};
+    if(fp==NULL){
+        printf("--Bos dosya--");
+    }
+    else {
+        printf(" ----Cikis icin 0'a basiniz----\n ");
+        printf("[1-100] numarayi giriniz:");
+        scanf("%d", &a.No);
+        if (a.No <= 100){
+            while (a.No != 0) {
+                printf("adi , soyadi ve bakiyeyi giriniz:\n ");
+                scanf("%s %s %d", a.Ad, a.Soyad, &a.Bakiye);
+                fseek(fp, (a.No - 1) * sizeof(struct insan), SEEK_SET);
+                fwrite(&a, sizeof(struct insan), 1, fp);
+                printf(" ----Cikis icin 0'a basiniz----\n ");
+                printf("[1-100] numarayi giriniz:");
+                scanf("%d", &a.No);
+            }
+         }
+        else{
+            printf("kisi sayisi gecildi.");
+        }
+    }
+    fclose(fp);
+
+}
+int main() {
+    int secim;
+    FILE *fp;
+    while(1) {
+        printf("\nHangi islemi yapmak istiyorsunuz: \n"
+                     "\n1= Dosya olusturma- (icerigi silip bos dosya): \n "
+                     "\n2= Kayit ekleme:: \n"
+                     "\n3= Arama: \n"
+                     "\n4= Listele:\n"
+                     "\n5= Kayit gucelle\n"
+                     "\n6= Cikis:\n");
+        printf("secim yapiniz:");
+        scanf("%d",&secim);
+        switch (secim) {
+            case 1:
+                olusturma(fp);
+                break;
+            case 2:
+                kayitekleme(fp);
+                break;
+            case 3:
+                arama(fp);
+                break;
+            case 4:
+                listele(fp);
+                break;
+            case 5:
+                kayitguncelle(fp);
+                break;
+            case 6:
+                exit(0);
+        }
+    }
+}
