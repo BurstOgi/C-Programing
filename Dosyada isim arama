@@ -12,7 +12,7 @@ int main(){
     printf("hangi isim:");
     scanf("%s",x);
     FILE *fp
-    fp = fopen("C:\\Users\\90545\\Desktop\\new.txt","r");
+    fp = fopen("new.txt","r");
     if(fp==NULL){
         printf("asdasd");
     }
