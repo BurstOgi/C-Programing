@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include "stdlib.h"
+struct liste {
+    int x;
+    struct liste *next;
+};
+typedef struct liste node;
+node *head;
+node *olusturma(){
+    int x;
+    node *p;
+    p=head;
+    printf("kac elamanli liste:");
+    scanf("%d",&x);
+    for (int i = 0; i < x; i++) {
+        if(i==0){
+            head=(node*) malloc(sizeof(node));
+            p=head;
+        }
+        else{
+            p->next=(node*) malloc(sizeof(node));
+            p=p->next;
+        }
+        printf("no:");
+        scanf("%d",&p->x);
+    }
+    p->next=NULL;
+    return head;
+}
+node *listele(){
+    node *p;
+    p=head;
+    while (p!=NULL){
+        printf("%d ",p->x);
+        p=p->next;
+    }
+}
+node *basaekleme(){
+    node *r;
+    int a;
+    r=(node*) malloc(sizeof(node));
+    printf("eklenecek sayi:");
+    scanf("%d",&a);
+    r->x=a;
+    r->next=head;
+    head=r;
+    return head;
+}
+node *sonaekleme(){
+    node *p;
+    p=head;
+    while (p->next!=NULL){
+        p=p->next;
+    }
+    for (int i = 0; i < 2; i++) {
+        p->next=(node*) malloc(sizeof(node));
+        printf("\ngir:");
+        scanf("%d",&p->next->x);
+        p=p->next;
+    }
+    p->next=NULL;
+    return head;
+}
+int main() {
+    
+}
+
+
+
+
