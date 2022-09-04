@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct liste {
+    int number;
+    struct liste * next;
+};
+typedef struct liste node;
+node *head;
+node *basaekleme(){
+    node *p;
+    p=(node*) malloc(sizeof(node));
+    p->next=head;
+    printf("basa eklemek istedigin sayi:");
+    scanf("%d",&p->number);
+    head=p;
+    return head;
+}
+node *sonaekleme(){
+    node *p;
+    int n;
+    p=head;
+    printf("kac tane eklenicek");
+    scanf("%d",&n);
+    while (p->next!=NULL){
+        p=p->next;
+    }
+    for (int i = 0; i < n; ++i) {
+        p->next=(node*) malloc(sizeof(node));
+        printf("sona ne eklenicek:");
+        scanf("%d",&p->next->number);
+        p=p->next;
+    }
+    p->next=NULL;
+    return head;
+}
+node *olustur(){
+    int n;
+    node *p;
+    printf("kac kisilik:");
+    scanf("%d",&n);
+
+    for (int i = 0; i < n; i++) {
+        if (i==0){
+            head=(node*) malloc(sizeof(node));
+            p=head;
+        }
+        else{
+            p->next=(node*) malloc(sizeof(node));
+            p=p->next;
+        }
+        printf("no:");
+        scanf("%d",&p->number);
+    }
+    p->next=NULL;
+    return head;
+}
+node *arayaekleme(){
+    int ekleme;
+    node *p=head,*q;
+    q=(node*) malloc(sizeof(node));
+    printf("hangi sayidan sonra eklenicek:");
+    scanf("%d",&ekleme);
+    printf("hangi sayiyi ekliceksin:");
+    scanf("%d",&q->number);
+    while (p!=NULL){
+        if(ekleme==p->number){
+            q->next=p->next;
+            p->next=q;
+        }
+        p=p->next;
+    }
+    return head;
+}
+node *arasil() {
+    node *p = head, *q = head;
+    int sayi;
+    printf("hangi sayiyi silceksin:");
+    scanf("%d", &sayi);
+    while (p->next != NULL) {
+
+        if (p->next->number == sayi) {
+
+            q = q->next;
+            p->next = q->next;
+            free(q);
+        }
+        p = p->next;
+        q = q->next;
+    }
+}
+node *sonsil(){
+    node *p;
+    p=head;
+    while (p->next->next!=NULL){
+        p=p->next;
+    }
+    free(p->next);
+    p->next=NULL;
+    return head;
+
+}
+node *bassilme(){
+    node *p=head;
+    head=head->next;
+    free(p);
+    return head;
+}
+node* listele(){
+    node *p;
+    p=head;
+    while (p!=NULL){
+        printf("%d ",p->number);
+        p=p->next;
+    }
+
+}
+int main(){
+    
+}
