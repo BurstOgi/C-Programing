@@ -1,0 +1,51 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+int main()
+{
+    int sayi = 0;
+    int pid;
+
+    printf("Hangi Sayiyi gireceksiniz \n");
+    scanf("%d", &sayi);
+    if(sayi < 0)
+    {
+        printf("Lütfen 0 dan büyük bir sayı giriniz.. \n");
+        scanf("%d", &sayi);
+    }
+    pid = fork();
+    if(pid < 0)
+    {
+        printf("Cocuk Olusturulamadı..\n");
+        exit(-1);
+    }
+    else if(pid == 0)
+    {
+        do
+        {
+            if(sayi%2 != 0)
+            {
+                printf("%d",sayi);
+                sayi = (sayi*3)+1;
+                printf(" = sayisinin 3 ile çarpıp 1 toplanmıs hali= %d \n",sayi);
+            }
+
+            else if(sayi%2 == 0)
+            {
+                printf("%d",sayi);
+                sayi = sayi/2;
+                printf(" = Sayisinin iki ile bolumunden kalan= %d \n",sayi);
+
+            }
+            //printf("%d \n",sayi); if ve else if'in içindeki printfleri yoruma alıp burayı çalıştırırsanız tek dizi gibi görürsünüz.
+        }while(sayi != 1);
+    }
+    else
+    {
+        printf("Hesaplamalar yapiliyor lütfen bekleyin. \n\n");
+        wait(NULL);
+    }
+    return 0;
+}
